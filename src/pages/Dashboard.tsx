@@ -1,7 +1,16 @@
 import React from 'react';
+import { Info, Navbar, Repos, Search, User } from '../components';
 
 const Dashboard: React.FC = () => {
-  return <div>Dashboard</div>;
+  return (
+    <main>
+      <Navbar />
+      <Search />
+      <Info />
+      <User />
+      <Repos />
+    </main>
+  );
 };
 
 export default Dashboard;
