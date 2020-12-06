@@ -46,7 +46,7 @@ const Repos: React.FC = () => {
     })
     .slice(0, 5);
 
-  /* const charData = [
+  const charData = [
     {
       label: 'HTML',
       value: '13',
@@ -59,13 +59,13 @@ const Repos: React.FC = () => {
       label: 'JavaScript',
       value: '80',
     },
-  ]; */
+  ];
 
   return (
     <section className='section'>
       <Wrapper className='section-center'>
         <Pie data={mostUsed} />
-        <Column />
+        <Column data={charData} />
         <Doughnut data={mostPopular} />
         <Bar />
       </Wrapper>
