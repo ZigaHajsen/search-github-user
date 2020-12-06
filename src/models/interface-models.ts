@@ -18,13 +18,13 @@ export interface GithubUserModel {
   type: string;
   site_admin: false;
   name: string;
-  company: string;
-  blog: string;
-  location: string;
+  company: null | string;
+  blog: null | string;
+  location: null | string;
   email: null | string;
   hireable: null | boolean;
-  bio: string;
-  twitter_username: string;
+  bio: null | string;
+  twitter_username: null | string;
   public_repos: number;
   public_gists: number;
   followers: number;
