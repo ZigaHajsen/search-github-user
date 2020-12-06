@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
 import { GithubUserModel } from '../models/interface-models';
 
