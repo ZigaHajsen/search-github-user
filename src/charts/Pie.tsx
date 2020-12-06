@@ -13,14 +13,15 @@ interface PieProps {
 const Pie: React.FC<PieProps> = ({ data }) => {
   const chartConfigs = {
     type: 'pie3d',
-    width: '400',
-    height: '400',
+    width: '100%',
+    height: '350',
     dataFormat: 'json',
     dataSource: {
       chart: {
         caption: 'Languages',
         theme: 'fusion',
         pieRadius: '45%',
+        decimals: 0,
       },
       data,
     },

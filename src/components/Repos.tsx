@@ -5,13 +5,62 @@ import { Bar, Column, Doughnut, Pie } from '../charts';
 import { GithubReposModel } from '../models/interface-models';
 
 interface ReposState {
-  githubRepos: GithubReposModel;
+  githubRepos: GithubReposModel[];
 }
 
 const Repos: React.FC = () => {
   const githubRepos = useSelector((state: ReposState) => state.githubRepos);
 
-  return <div>Repos</div>;
+  let languages = githubRepos.reduce((total: any, item: GithubReposModel) => {
+    const { language } = item;
+
+    if (!language) {
+      return total;
+    }
+
+    if (!total[language]) {
+      total[language] = { label: language, value: 1 };
+    } else {
+      total[language] = {
+        ...total[language],
+        value: total[language].value + 1,
+      };
+    }
+
+    return total;
+  }, {});
+
+  languages = Object.values(languages)
+    .sort((a: any, b: any) => {
+      return b.value - a.value;
+    })
+    .slice(0, 5);
+
+  /* const charData = [
+    {
+      label: 'HTML',
+      value: '13',
+    },
+    {
+      label: 'CSS',
+      value: '160',
+    },
+    {
+      label: 'JavaScript',
+      value: '80',
+    },
+  ]; */
+
+  return (
+    <section className='section'>
+      <Wrapper className='section-center'>
+        <Pie data={languages} />
+        <Column />
+        <Doughnut />
+        <Bar />
+      </Wrapper>
+    </section>
+  );
 };
 
 const Wrapper = styled.div`
