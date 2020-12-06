@@ -12,31 +12,41 @@ const Repos: React.FC = () => {
   const githubRepos = useSelector((state: ReposState) => state.githubRepos);
 
   let languages = githubRepos.reduce((total: any, item: GithubReposModel) => {
-    const { language } = item;
+    const { language, stargazers_count } = item;
 
     if (!language) {
       return total;
     }
 
     if (!total[language]) {
-      total[language] = { label: language, value: 1 };
+      total[language] = { label: language, value: 1, stars: stargazers_count };
     } else {
       total[language] = {
         ...total[language],
         value: total[language].value + 1,
+        stars: total[language].stars + stargazers_count,
       };
     }
 
     return total;
   }, {});
 
-  languages = Object.values(languages)
+  const mostUsed = Object.values(languages)
     .sort((a: any, b: any) => {
       return b.value - a.value;
     })
     .slice(0, 5);
 
-  const charData = [
+  const mostPopular = Object.values(languages)
+    .sort((a: any, b: any) => {
+      return b.stars - a.stars;
+    })
+    .map((item: any) => {
+      return { ...item, value: item.stars };
+    })
+    .slice(0, 5);
+
+  /* const charData = [
     {
       label: 'HTML',
       value: '13',
@@ -49,14 +59,14 @@ const Repos: React.FC = () => {
       label: 'JavaScript',
       value: '80',
     },
-  ];
+  ]; */
 
   return (
     <section className='section'>
       <Wrapper className='section-center'>
-        <Pie data={languages} />
+        <Pie data={mostUsed} />
         <Column />
-        <Doughnut data={charData} />
+        <Doughnut data={mostPopular} />
         <Bar />
       </Wrapper>
     </section>
