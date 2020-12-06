@@ -1,7 +1,34 @@
 import React from 'react';
+import ReactFC from 'react-fusioncharts';
+import FusionCharts from 'fusioncharts';
+import Chart from 'fusioncharts/fusioncharts.charts';
+import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 
-const Bar: React.FC = () => {
-  return <div>Bar</div>;
+ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
+
+interface BarProps {
+  data: any;
+}
+
+const Bar: React.FC<BarProps> = ({ data }) => {
+  const chartConfigs = {
+    type: 'bar3d',
+    width: '100%',
+    height: '350',
+    dataFormat: 'json',
+    dataSource: {
+      chart: {
+        caption: 'Most Forked',
+        yAxisName: 'Forks',
+        xAxisName: 'Repos',
+        xAxisNameFontSize: '16px',
+        yAxisNameFontSize: '16px',
+      },
+      data,
+    },
+  };
+
+  return <ReactFC {...chartConfigs} />;
 };
 
 export default Bar;

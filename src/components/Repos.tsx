@@ -67,7 +67,7 @@ const Repos: React.FC = () => {
         <Pie data={mostUsed} />
         <Column data={charData} />
         <Doughnut data={mostPopular} />
-        <Bar />
+        <Bar data={charData} />
       </Wrapper>
     </section>
   );
