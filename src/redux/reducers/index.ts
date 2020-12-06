@@ -4,7 +4,7 @@ import reposReducer from './reposReducer';
 import followersReducer from './followersReducer';
 
 export default combineReducers({
-  user: userReducer,
-  repos: reposReducer,
-  followers: followersReducer,
+  githubUser: userReducer,
+  githubRepos: reposReducer,
+  githubFollowers: followersReducer,
 });
