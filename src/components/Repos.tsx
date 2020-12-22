@@ -46,28 +46,31 @@ const Repos: React.FC = () => {
     })
     .slice(0, 5);
 
-  const charData = [
-    {
-      label: 'HTML',
-      value: '13',
+  let { stars, forks } = githubRepos.reduce(
+    (total: any, item: GithubReposModel) => {
+      const { stargazers_count, name, forks } = item;
+
+      total.stars[stargazers_count] = { label: name, value: stargazers_count };
+      total.forks[forks] = { label: name, value: forks };
+
+      return total;
     },
     {
-      label: 'CSS',
-      value: '160',
-    },
-    {
-      label: 'JavaScript',
-      value: '80',
-    },
-  ];
+      stars: {},
+      forks: {},
+    }
+  );
+
+  stars = Object.values(stars).slice(-5).reverse();
+  forks = Object.values(forks).slice(-5).reverse();
 
   return (
     <section className='section'>
       <Wrapper className='section-center'>
         <Pie data={mostUsed} />
-        <Column data={charData} />
+        <Column data={stars} />
         <Doughnut data={mostPopular} />
-        <Bar data={charData} />
+        <Bar data={forks} />
       </Wrapper>
     </section>
   );
