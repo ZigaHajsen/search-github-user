@@ -19,8 +19,8 @@ const Column: React.FC<ColumnProps> = ({ data }) => {
     dataSource: {
       chart: {
         caption: 'Most Popular',
-        yAxisName: 'Stars',
         xAxisName: 'Repos',
+        yAxisName: 'Stars',
         xAxisNameFontSize: '16px',
         yAxisNameFontSize: '16px',
       },

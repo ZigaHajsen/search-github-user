@@ -19,8 +19,8 @@ const Bar: React.FC<BarProps> = ({ data }) => {
     dataSource: {
       chart: {
         caption: 'Most Forked',
-        yAxisName: 'Forks',
         xAxisName: 'Repos',
+        yAxisName: 'Forks',
         xAxisNameFontSize: '16px',
         yAxisNameFontSize: '16px',
       },
