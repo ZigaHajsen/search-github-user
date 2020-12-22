@@ -3,11 +3,12 @@ import ReactFC from 'react-fusioncharts';
 import FusionCharts from 'fusioncharts';
 import Chart from 'fusioncharts/fusioncharts.charts';
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.candy';
+import { DataBig } from '../models/interface-models';
 
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
 interface DoughnutProps {
-  data: any;
+  data: DataBig[];
 }
 
 const Doughnut: React.FC<DoughnutProps> = ({ data }) => {

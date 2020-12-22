@@ -129,3 +129,12 @@ export interface GithubReposModel {
   watchers: number;
   default_branch: string;
 }
+
+export interface DataSmall {
+  label: string;
+  value: number;
+}
+
+export interface DataBig extends DataSmall {
+  stars: number;
+}

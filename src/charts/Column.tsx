@@ -3,11 +3,12 @@ import ReactFC from 'react-fusioncharts';
 import FusionCharts from 'fusioncharts';
 import Chart from 'fusioncharts/fusioncharts.charts';
 import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+import { DataSmall } from '../models/interface-models';
 
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
 interface ColumnProps {
-  data: any;
+  data: DataSmall;
 }
 
 const Column: React.FC<ColumnProps> = ({ data }) => {
