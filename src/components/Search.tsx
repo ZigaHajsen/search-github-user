@@ -5,7 +5,7 @@ import { MdSearch } from 'react-icons/md';
 const Search: React.FC = () => {
   const [user, setUser] = useState('');
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (user) {
