@@ -13,7 +13,6 @@ export const checkRequests = () => async (dispatch: any) => {
       type: actionTypes.CHECK_REQUESTS,
       payload: res.data.rate,
     });
-    console.log(res.data);
   } catch (error) {
     dispatch({
       type: actionTypes.CHECK_REQUEST_ERROR,
