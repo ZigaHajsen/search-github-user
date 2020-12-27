@@ -1,9 +1,9 @@
-import { Action } from 'redux';
+import { actionTypes } from '../actions/requestsActions';
 
-const initialState = 0;
-
-export default function requestsReducer(state = initialState, action: Action) {
+export default function requestsReducer(state = {}, action: any) {
   switch (action.type) {
+    case actionTypes.CHECK_REQUESTS:
+      return action.payload;
     default:
       return state;
   }
