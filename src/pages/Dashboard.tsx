@@ -9,7 +9,7 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     dispatch(checkRequests());
-  }, []);
+  }, [dispatch]);
 
   return (
     <main>
