@@ -130,6 +130,13 @@ export interface GithubReposModel {
   default_branch: string;
 }
 
+export interface GithubRequestsModel {
+  limit: number;
+  remaining: number;
+  reset: number;
+  used: number;
+}
+
 export interface DataSmall {
   label: string;
   value: number;
