@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
+import { useSelector, useDispatch } from 'react-redux';
+import { checkRequests } from '../redux/actions/requestsActions';
+import { GithubRequestsModel } from '../models/interface-models';
+
+interface RequestsState {
+  githubRequests: GithubRequestsModel;
+}
 
 const Search: React.FC = () => {
   const [user, setUser] = useState('');
+
+  const githubRequests = useSelector(
+    (state: RequestsState) => state.githubRequests
+  );
+  const dispatch = useDispatch();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -11,6 +23,10 @@ const Search: React.FC = () => {
     if (user) {
     }
   };
+
+  useEffect(() => {
+    dispatch(checkRequests());
+  }, [dispatch]);
 
   return (
     <section className='section'>
@@ -24,10 +40,14 @@ const Search: React.FC = () => {
               value={user}
               onChange={(e) => setUser(e.target.value)}
             />
-            <button type='submit'>search</button>
+            {githubRequests.remaining > 0 && (
+              <button type='submit'>search</button>
+            )}
           </div>
         </form>
-        <h3>requests : 60 / 60</h3>
+        <h3>
+          requests: {githubRequests.remaining} / {githubRequests.limit}
+        </h3>
       </Wrapper>
     </section>
   );
