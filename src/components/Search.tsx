@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 import { MdSearch } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
 import { checkRequests } from '../redux/actions/requestsActions';
+import { searchUser } from '../redux/actions/userActions';
 import { GithubRequestsModel } from '../models/interface-models';
 
 interface RequestsState {
@@ -21,12 +22,16 @@ const Search: React.FC = () => {
     e.preventDefault();
 
     if (user) {
+      dispatch(searchUser(user));
+      dispatch(checkRequests());
+      setUser('');
     }
   };
 
   useEffect(() => {
     dispatch(checkRequests());
-  }, [dispatch]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <section className='section'>
