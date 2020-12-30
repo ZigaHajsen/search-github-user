@@ -30,6 +30,7 @@ const Search: React.FC = () => {
   };
 
   useEffect(() => {
+    // dispatch(searchUser('ZigaHajsen'));
     dispatch(checkRequests());
     // eslint-disable-next-line
   }, []);
