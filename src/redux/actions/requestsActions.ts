@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { actionTypes } from '../types';
+import { setError } from './errorsActions';
 
 export const checkRequests = () => async (dispatch: any) => {
   try {
@@ -13,5 +14,8 @@ export const checkRequests = () => async (dispatch: any) => {
     dispatch({
       type: actionTypes.CHECK_REQUEST_ERROR,
     });
+    dispatch(
+      setError(true, 'sorry, you have exceeded your hourly rate limit!')
+    );
   }
 };

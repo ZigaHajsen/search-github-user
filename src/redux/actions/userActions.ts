@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { actionTypes } from '../types';
+import { setError } from './errorsActions';
 
 export const searchUser = (user: string) => async (dispatch: any) => {
   try {
@@ -13,5 +14,6 @@ export const searchUser = (user: string) => async (dispatch: any) => {
     dispatch({
       type: actionTypes.SEARCH_USER_ERROR,
     });
+    dispatch(setError(true, 'there is no user with that username'));
   }
 };
