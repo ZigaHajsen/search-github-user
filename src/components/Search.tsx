@@ -4,10 +4,14 @@ import { MdSearch } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
 import { checkRequests } from '../redux/actions/requestsActions';
 import { searchUser } from '../redux/actions/userActions';
-import { GithubRequestsModel } from '../models/interface-models';
+import { GithubRequestsModel, ErrorsModel } from '../models/interface-models';
 
 interface RequestsState {
   githubRequests: GithubRequestsModel;
+}
+
+interface ErrorsState {
+  errors: ErrorsModel;
 }
 
 const Search: React.FC = () => {
@@ -16,7 +20,7 @@ const Search: React.FC = () => {
   const githubRequests = useSelector(
     (state: RequestsState) => state.githubRequests
   );
-  const errors = useSelector((state: any) => state.errors);
+  const errors = useSelector((state: ErrorsState) => state.errors);
   const dispatch = useDispatch();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

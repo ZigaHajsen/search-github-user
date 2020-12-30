@@ -137,6 +137,11 @@ export interface GithubRequestsModel {
   used: number;
 }
 
+export interface ErrorsModel {
+  show: boolean;
+  msg: string;
+}
+
 export interface DataSmall {
   label: string;
   value: number;
