@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { actionTypes } from '../types';
-import { setError, removeError } from './errorsActions';
+import { setError } from './errorsActions';
 
 export const checkRequests = () => async (dispatch: any) => {
   try {
@@ -10,7 +10,6 @@ export const checkRequests = () => async (dispatch: any) => {
       type: actionTypes.CHECK_REQUESTS,
       payload: res.data.rate,
     });
-    dispatch(removeError());
   } catch (error) {
     dispatch({
       type: actionTypes.CHECK_REQUEST_ERROR,
