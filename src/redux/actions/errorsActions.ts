@@ -7,6 +7,9 @@ export const setError = (show: boolean, msg: string) => (dispatch: any) => {
   });
 };
 
-export const removeError = (show: boolean, msg: string) => (
-  dispatch: any
-) => {};
+export const removeError = () => (dispatch: any) => {
+  dispatch({
+    type: actionTypes.REMOVE_ERROR,
+    payload: { show: false, msg: '' },
+  });
+};

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { actionTypes } from '../types';
-import { setError } from './errorsActions';
+import { setError, removeError } from './errorsActions';
 
 export const searchUser = (user: string) => async (dispatch: any) => {
   try {
@@ -10,6 +10,7 @@ export const searchUser = (user: string) => async (dispatch: any) => {
       type: actionTypes.SEARCH_USER,
       payload: res.data,
     });
+    dispatch(removeError());
   } catch (error) {
     dispatch({
       type: actionTypes.SEARCH_USER_ERROR,
