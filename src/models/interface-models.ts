@@ -142,6 +142,10 @@ export interface ErrorsModel {
   msg: string;
 }
 
+export interface LoadingModel {
+  isLoading: boolean;
+}
+
 export interface DataSmall {
   label: string;
   value: number;

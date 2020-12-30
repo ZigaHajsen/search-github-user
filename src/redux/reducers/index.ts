@@ -4,6 +4,7 @@ import reposReducer from './reposReducer';
 import followersReducer from './followersReducer';
 import requestsReducer from './requestsReducer';
 import errorsReducer from './errorsReducer';
+import loadingReducer from './loadingReducer';
 
 export default combineReducers({
   githubUser: userReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   githubFollowers: followersReducer,
   githubRequests: requestsReducer,
   errors: errorsReducer,
+  loading: loadingReducer,
 });
