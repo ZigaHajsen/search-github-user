@@ -16,6 +16,7 @@ const Search: React.FC = () => {
   const githubRequests = useSelector(
     (state: RequestsState) => state.githubRequests
   );
+  const errors = useSelector((state: any) => state.errors);
   const dispatch = useDispatch();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -36,9 +37,9 @@ const Search: React.FC = () => {
   return (
     <section className='section'>
       <Wrapper className='section-center'>
-        {githubRequests.remaining === 0 && (
+        {errors.show === true && (
           <ErrorWrapper>
-            <p>sorry, you have exceeded your hourly rate limit!</p>
+            <p>{errors.msg}</p>
           </ErrorWrapper>
         )}
         <form onSubmit={handleSubmit}>
