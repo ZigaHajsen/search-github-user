@@ -1,9 +1,5 @@
 import axios from 'axios';
-
-export const actionTypes = {
-  CHECK_REQUESTS: 'CHECK_REQUESTS',
-  CHECK_REQUEST_ERROR: 'CHECK_REQUEST_ERROR',
-};
+import { actionTypes } from '../types';
 
 export const checkRequests = () => async (dispatch: any) => {
   try {

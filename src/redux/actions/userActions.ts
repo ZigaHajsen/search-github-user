@@ -1,9 +1,5 @@
 import axios from 'axios';
-
-export const actionTypes = {
-  SEARCH_USER: 'SEARCH_USER',
-  SEARCH_USER_ERROR: 'SEARCH_USER_ERROR',
-};
+import { actionTypes } from '../types';
 
 export const searchUser = (user: string) => async (dispatch: any) => {
   try {

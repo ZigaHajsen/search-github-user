@@ -1,4 +1,4 @@
-import { actionTypes } from '../actions/userActions';
+import { actionTypes } from '../types';
 import user from '../../mockData/mockUser';
 
 const initialState = user;
