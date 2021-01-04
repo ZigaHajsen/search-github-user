@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { MdSearch } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
-import { checkRequests } from '../redux/actions/requestsActions';
 import { searchUser } from '../redux/actions/userActions';
 import { GithubRequestsModel, ErrorsModel } from '../models/interface-models';
 
@@ -33,8 +32,7 @@ const Search: React.FC = () => {
   };
 
   useEffect(() => {
-    // dispatch(searchUser('ZigaHajsen'));
-    dispatch(checkRequests());
+    dispatch(searchUser('ZigaHajsen'));
     // eslint-disable-next-line
   }, []);
 
