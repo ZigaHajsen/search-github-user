@@ -28,7 +28,6 @@ const Search: React.FC = () => {
 
     if (user) {
       dispatch(searchUser(user));
-      dispatch(checkRequests());
       setUser('');
     }
   };

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { actionTypes } from '../types';
 import { setError, removeError } from './errorsActions';
 import { setLoading, removeLoading } from './loadingActions';
+import { checkRequests } from './requestsActions';
 
 export const searchUser = (user: string) => async (dispatch: any) => {
   dispatch(setLoading());
@@ -9,6 +10,7 @@ export const searchUser = (user: string) => async (dispatch: any) => {
   try {
     const res = await axios.get(`https://api.github.com/users/${user}`);
 
+    dispatch(checkRequests());
     dispatch({
       type: actionTypes.SEARCH_USER,
       payload: res.data,
@@ -16,6 +18,7 @@ export const searchUser = (user: string) => async (dispatch: any) => {
     dispatch(removeError());
     dispatch(removeLoading());
   } catch (error) {
+    dispatch(checkRequests());
     dispatch({
       type: actionTypes.SEARCH_USER_ERROR,
     });
