@@ -3,6 +3,7 @@ import { actionTypes } from '../types';
 import { setError, removeError } from './errorsActions';
 import { setLoading, removeLoading } from './loadingActions';
 import { checkRequests } from './requestsActions';
+import { getFollowers } from './followersActions';
 
 export const searchUser = (user: string) => async (dispatch: any) => {
   dispatch(setLoading());
@@ -15,6 +16,7 @@ export const searchUser = (user: string) => async (dispatch: any) => {
       type: actionTypes.SEARCH_USER,
       payload: res.data,
     });
+    dispatch(getFollowers(user));
     dispatch(removeError());
     dispatch(removeLoading());
   } catch (error) {
