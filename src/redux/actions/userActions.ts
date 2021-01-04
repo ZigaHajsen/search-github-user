@@ -4,6 +4,7 @@ import { setError, removeError } from './errorsActions';
 import { setLoading, removeLoading } from './loadingActions';
 import { checkRequests } from './requestsActions';
 import { getFollowers } from './followersActions';
+import { getRepos } from './reposActions';
 
 export const searchUser = (user: string) => async (dispatch: any) => {
   dispatch(setLoading());
@@ -17,6 +18,7 @@ export const searchUser = (user: string) => async (dispatch: any) => {
       payload: res.data,
     });
     dispatch(getFollowers(user));
+    dispatch(getRepos(user));
     dispatch(removeError());
     dispatch(removeLoading());
   } catch (error) {
