@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { MdSearch } from 'react-icons/md';
 import { useSelector, useDispatch } from 'react-redux';
-import { searchUser } from '../redux/actions/userActions';
+import { searchUserData } from '../redux/actions/userActions';
 import { GithubRequestsModel, ErrorsModel } from '../models/interface-models';
 
 interface RequestsState {
@@ -26,13 +26,13 @@ const Search: React.FC = () => {
     e.preventDefault();
 
     if (user) {
-      dispatch(searchUser(user));
+      dispatch(searchUserData(user));
       setUser('');
     }
   };
 
   useEffect(() => {
-    dispatch(searchUser('ZigaHajsen'));
+    dispatch(searchUserData('ZigaHajsen'));
     // eslint-disable-next-line
   }, []);
 

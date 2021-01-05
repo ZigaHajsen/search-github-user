@@ -7,26 +7,38 @@ import { getFollowers } from './followersActions';
 import { getRepos } from './reposActions';
 
 export const searchUser = (user: string) => async (dispatch: any) => {
-  dispatch(setLoading());
-
   try {
     const res = await axios.get(`https://api.github.com/users/${user}`);
 
-    dispatch(checkRequests());
     dispatch({
       type: actionTypes.SEARCH_USER,
       payload: res.data,
     });
-    dispatch(getFollowers(user));
-    dispatch(getRepos(user));
-    dispatch(removeError());
-    dispatch(removeLoading());
   } catch (error) {
-    dispatch(checkRequests());
     dispatch({
       type: actionTypes.SEARCH_USER_ERROR,
     });
     dispatch(setError(true, 'there is no user with that username'));
+  }
+};
+
+export const searchUserData = (user: string) => async (dispatch: any) => {
+  dispatch(setLoading());
+
+  try {
+    await Promise.allSettled([
+      dispatch({
+        type: actionTypes.SEARCH_USER_DATA,
+      }),
+      dispatch(checkRequests()),
+      dispatch(searchUser(user)),
+      dispatch(getFollowers(user)),
+      dispatch(getRepos(user)),
+      dispatch(removeError()),
+    ]);
+
     dispatch(removeLoading());
+  } catch (error) {
+    console.log(error);
   }
 };
