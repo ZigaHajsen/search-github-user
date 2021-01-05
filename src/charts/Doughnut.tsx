@@ -13,7 +13,7 @@ interface DoughnutProps {
 
 const Doughnut: React.FC<DoughnutProps> = ({ data }) => {
   const chartConfigs = {
-    type: 'doughnut2d',
+    type: 'doughnut3d',
     width: '100%',
     height: '350',
     dataFormat: 'json',
@@ -23,7 +23,7 @@ const Doughnut: React.FC<DoughnutProps> = ({ data }) => {
         doughnutRadius: '45%',
         decimals: 0,
         showPercentValues: 0,
-        theme: 'candy',
+        theme: 'fusion',
       },
       data,
     },
