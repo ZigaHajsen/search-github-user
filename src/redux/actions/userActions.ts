@@ -30,13 +30,13 @@ export const searchUserData = (user: string) => async (dispatch: any) => {
       dispatch({
         type: actionTypes.SEARCH_USER_DATA,
       }),
-      dispatch(checkRequests()),
       dispatch(searchUser(user)),
       dispatch(getFollowers(user)),
       dispatch(getRepos(user)),
       dispatch(removeError()),
     ]);
 
+    dispatch(checkRequests());
     dispatch(removeLoading());
   } catch (error) {
     console.log(error);
