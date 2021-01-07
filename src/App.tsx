@@ -1,14 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Dashboard, Login, Error } from './pages';
+import { Dashboard, Login, PrivateRoute, Error } from './pages';
 
 const App: React.FC = () => {
   return (
     <Router>
       <Switch>
-        <Route path='/' exact={true}>
+        {/*
+ // @ts-ignore */}
+        <PrivateRoute path='/' exact={true}>
           <Dashboard />
-        </Route>
+        </PrivateRoute>
         <Route path='/login'>
           <Login />
         </Route>
