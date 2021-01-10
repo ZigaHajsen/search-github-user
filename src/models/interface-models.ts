@@ -29,8 +29,6 @@ export interface GithubReposModel {
 export interface GithubRequestsModel {
   limit: number;
   remaining: number;
-  reset: number;
-  used: number;
 }
 
 export interface ErrorsModel {
