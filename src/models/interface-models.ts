@@ -7,10 +7,10 @@ export interface GithubUserModel {
   location: null | string;
   bio: null | string;
   twitter_username: null | string;
-  public_repos: null | number;
-  public_gists: null | number;
-  followers: null | number;
-  following: null | number;
+  public_repos: number;
+  public_gists: number;
+  followers: number;
+  following: number;
 }
 
 export interface GithubFollowerModel {
