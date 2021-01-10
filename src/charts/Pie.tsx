@@ -8,7 +8,7 @@ import { DataBig } from '../models/interface-models';
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
 interface PieProps {
-  data: DataBig[] | unknown;
+  data: DataBig[];
 }
 
 const Pie: React.FC<PieProps> = ({ data }) => {
