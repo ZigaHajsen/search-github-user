@@ -8,7 +8,7 @@ import { DataSmall } from '../models/interface-models';
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
 interface BarProps {
-  data: DataSmall;
+  data: { [key: number]: DataSmall };
 }
 
 const Bar: React.FC<BarProps> = ({ data }) => {

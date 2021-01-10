@@ -8,7 +8,7 @@ import { DataSmall } from '../models/interface-models';
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme);
 
 interface ColumnProps {
-  data: DataSmall;
+  data: { [key: number]: DataSmall };
 }
 
 const Column: React.FC<ColumnProps> = ({ data }) => {

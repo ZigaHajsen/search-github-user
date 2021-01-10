@@ -3,51 +3,71 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
 import { Bar, Column, Doughnut, Pie } from '../charts';
 import { GithubReposModel } from '../models/interface-models';
+import { DataSmall, DataBig } from '../models/interface-models';
 
 interface ReposState {
   githubRepos: GithubReposModel[];
+}
+interface LanguagesTotal {
+  [key: string]: DataBig;
+}
+
+interface ReposTotal {
+  stars: StarsForks;
+  forks: StarsForks;
+}
+
+interface StarsForks {
+  [key: number]: DataSmall;
 }
 
 const Repos: React.FC = () => {
   const githubRepos = useSelector((state: ReposState) => state.githubRepos);
 
-  let languages = githubRepos.reduce((total: any, item: GithubReposModel) => {
-    const { language, stargazers_count } = item;
+  let languages = githubRepos.reduce(
+    (total: LanguagesTotal, item: GithubReposModel) => {
+      const { language, stargazers_count } = item;
 
-    if (!language) {
+      if (!language) {
+        return total;
+      }
+
+      if (!total[language]) {
+        total[language] = {
+          label: language,
+          value: 1,
+          stars: stargazers_count,
+        };
+      } else {
+        total[language] = {
+          ...total[language],
+          value: total[language].value + 1,
+          stars: total[language].stars + stargazers_count,
+        };
+      }
+
       return total;
-    }
-
-    if (!total[language]) {
-      total[language] = { label: language, value: 1, stars: stargazers_count };
-    } else {
-      total[language] = {
-        ...total[language],
-        value: total[language].value + 1,
-        stars: total[language].stars + stargazers_count,
-      };
-    }
-
-    return total;
-  }, {});
+    },
+    {}
+  );
 
   const mostUsed = Object.values(languages)
-    .sort((a: any, b: any) => {
+    .sort((a: DataBig, b: DataBig) => {
       return b.value - a.value;
     })
     .slice(0, 5);
 
   const mostPopular = Object.values(languages)
-    .sort((a: any, b: any) => {
+    .sort((a: DataBig, b: DataBig) => {
       return b.stars - a.stars;
     })
-    .map((item: any) => {
+    .map((item: DataBig) => {
       return { ...item, value: item.stars };
     })
     .slice(0, 5);
 
   let { stars, forks } = githubRepos.reduce(
-    (total: any, item: GithubReposModel) => {
+    (total: ReposTotal, item: GithubReposModel) => {
       const { stargazers_count, name, forks } = item;
 
       total.stars[stargazers_count] = { label: name, value: stargazers_count };
