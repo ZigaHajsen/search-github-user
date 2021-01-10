@@ -22,7 +22,7 @@ export interface GithubFollowerModel {
 export interface GithubReposModel {
   name: string;
   stargazers_count: number;
-  language: string;
+  language: null | string;
   forks: number;
 }
 
