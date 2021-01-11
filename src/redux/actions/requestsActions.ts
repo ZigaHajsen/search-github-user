@@ -12,7 +12,7 @@ export const checkRequests = () => async (dispatch: any) => {
     });
   } catch (error) {
     dispatch({
-      type: actionTypes.CHECK_REQUEST_ERROR,
+      type: actionTypes.CHECK_REQUESTS_ERROR,
     });
     dispatch(
       setError(true, 'sorry, you have exceeded your hourly rate limit!')
