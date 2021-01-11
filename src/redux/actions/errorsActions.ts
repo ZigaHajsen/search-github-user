@@ -1,15 +1,9 @@
 import { actionTypes } from '../types';
-interface SetErrorAction {
-  type: typeof actionTypes.SET_ERROR;
-  payload: object;
-}
 
-interface RemoveErrorAction {
-  type: typeof actionTypes.REMOVE_ERROR;
+export type ErrorsActions = {
+  type: string;
   payload: object;
-}
-
-export type ErrorsActions = SetErrorAction | RemoveErrorAction;
+};
 
 export const setError = (show: boolean, msg: string) => (
   dispatch: (action: ErrorsActions) => null

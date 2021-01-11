@@ -3,7 +3,7 @@ import { actionTypes } from '../types';
 import { GithubFollowerModel } from '../../models/interface-models';
 
 export type GetFollowersAction = {
-  type: typeof actionTypes.GET_FOLLOWERS;
+  type: string;
   payload?: GithubFollowerModel;
 };
 

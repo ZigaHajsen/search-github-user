@@ -1,16 +1,9 @@
 import { actionTypes } from '../types';
 
-interface SetLoadingAction {
-  type: typeof actionTypes.SET_LOADING;
+export type LoadingActions = {
+  type: string;
   payload: object;
-}
-
-interface RemoveLoadingAction {
-  type: typeof actionTypes.REMOVE_LOADING;
-  payload: object;
-}
-
-export type LoadingActions = SetLoadingAction | RemoveLoadingAction;
+};
 
 export const setLoading = () => (
   dispatch: (action: LoadingActions) => null
