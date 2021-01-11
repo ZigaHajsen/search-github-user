@@ -1,7 +1,15 @@
 import axios from 'axios';
 import { actionTypes } from '../types';
+import { GithubFollowerModel } from '../../models/interface-models';
 
-export const getFollowers = (user: string) => async (dispatch: any) => {
+export type GetFollowersAction = {
+  type: typeof actionTypes.GET_FOLLOWERS;
+  payload?: GithubFollowerModel;
+};
+
+export const getFollowers = (user: string) => async (
+  dispatch: (action: GetFollowersAction) => null
+) => {
   try {
     const res = await axios.get(
       `https://api.github.com/users/${user}/followers`
