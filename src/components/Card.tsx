@@ -23,16 +23,16 @@ const Card: React.FC = () => {
 
   return (
     <Wrapper>
-      <header>
+      <Header>
         <img src={avatar_url} alt={name} />
         <div>
           <h4>{name}</h4>
           <p>@{twitter_username || 'no twitter'}</p>
         </div>
         <a href={html_url}>follow</a>
-      </header>
-      <p className='bio'>{bio}</p>
-      <div className='links'>
+      </Header>
+      <Bio>{bio}</Bio>
+      <Links>
         <p>
           <MdBusiness /> {company || 'no business'}
         </p>
@@ -42,7 +42,7 @@ const Card: React.FC = () => {
         <a href={`https://${blog}`}>
           <MdLink /> {blog || 'no blog'}
         </a>
-      </div>
+      </Links>
     </Wrapper>
   );
 };
@@ -70,73 +70,73 @@ const Wrapper = styled.article`
     letter-spacing: var(--spacing);
     font-size: 1rem;
   }
+`;
 
-  header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+const Header = styled.header`
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 1rem;
+  margin-bottom: 1rem;
+
+  img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+  }
+
+  h4 {
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--clr-primary-5);
+    border: 1px solid var(--clr-primary-5);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    text-transform: capitalize;
+    letter-spacing: var(--spacing);
+    transition: var(--transition);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--clr-primary-5);
+      color: var(--clr-white);
+    }
+  }
+`;
+
+const Bio = styled.p`
+  color: var(--clr-grey-3);
+`;
+
+const Links = styled.div`
+  p,
+  a {
+    margin-bottom: 0.25rem;
+    display: flex;
     align-items: center;
-    column-gap: 1rem;
-    margin-bottom: 1rem;
 
-    img {
-      width: 75px;
-      height: 75px;
-      border-radius: 50%;
-    }
-
-    h4 {
-      margin-bottom: 0.25rem;
-    }
-
-    p {
-      margin-bottom: 0;
-    }
-
-    a {
-      color: var(--clr-primary-5);
-      border: 1px solid var(--clr-primary-5);
-      padding: 0.25rem 0.75rem;
-      border-radius: 1rem;
-      text-transform: capitalize;
-      letter-spacing: var(--spacing);
-      transition: var(--transition);
-      cursor: pointer;
-
-      &:hover {
-        background: var(--clr-primary-5);
-        color: var(--clr-white);
-      }
+    svg {
+      margin-right: 0.5rem;
+      font-size: 1.3rem;
     }
   }
 
-  .bio {
-    color: var(--clr-grey-3);
-  }
+  a {
+    color: var(--clr-primary-5);
+    transition: var(--transition);
 
-  .links {
-    p,
-    a {
-      margin-bottom: 0.25rem;
-      display: flex;
-      align-items: center;
-
-      svg {
-        margin-right: 0.5rem;
-        font-size: 1.3rem;
-      }
+    svg {
+      color: var(--clr-grey-5);
     }
 
-    a {
-      color: var(--clr-primary-5);
-      transition: var(--transition);
-
-      svg {
-        color: var(--clr-grey-5);
-      }
-
-      &:hover {
-        color: var(--clr-primary-3);
-      }
+    &:hover {
+      color: var(--clr-primary-3);
     }
   }
 `;

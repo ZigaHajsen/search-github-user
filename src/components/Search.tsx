@@ -44,7 +44,7 @@ const Search: React.FC = () => {
             <p>{errors.msg}</p>
           </ErrorWrapper>
         )}
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <div className='form-control'>
             <MdSearch />
             <input
@@ -57,7 +57,7 @@ const Search: React.FC = () => {
               <button type='submit'>search</button>
             )}
           </div>
-        </form>
+        </Form>
         <h3>
           requests: {githubRequests.remaining} / {githubRequests.limit}
         </h3>
@@ -80,6 +80,14 @@ const Wrapper = styled.div`
     }
   }
 
+  h3 {
+    margin-bottom: 0;
+    color: var(--clr-grey-5);
+    font-weight: 400;
+  }
+`;
+
+const Form = styled.form`
   .form-control {
     background: var(--clr-white);
     display: grid;
@@ -137,12 +145,6 @@ const Wrapper = styled.div`
         font-size: 0.85rem;
       }
     }
-  }
-
-  h3 {
-    margin-bottom: 0;
-    color: var(--clr-grey-5);
-    font-weight: 400;
   }
 `;
 
