@@ -1,6 +1,6 @@
 # Github Users
----
-Live Project: https://ziga-github-users.netlify.app/login
+
+Live Project: https://ziga-github-users.netlify.app
 ---
 Goal of the project is to build a site that searches GitHub user data and displays it using React.js, Redux.js, GitHub API and TypeScript
 ---
